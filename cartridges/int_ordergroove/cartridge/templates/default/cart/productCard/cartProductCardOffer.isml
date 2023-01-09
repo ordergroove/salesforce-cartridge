@@ -1,0 +1,11 @@
+<isif condition="${!empty(dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable')) && dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable') == true}">
+    <!--- Subscribe product --->
+    <div class="product-subscription">
+        <isif condition="${empty(dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveLegacyOffer')) || dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveLegacyOffer') == true}">
+            <div class="og-offer" data-og-module="sc" data-og-product="${lineItem.id}"></div>
+        <iselse/>
+            <og-offer product="${lineItem.id}" location="cart"></og-offer>
+        </isif>
+    </div>
+
+</isif>

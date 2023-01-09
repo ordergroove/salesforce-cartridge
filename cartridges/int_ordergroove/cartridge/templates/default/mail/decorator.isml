@@ -1,0 +1,58 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<style>
+			img {
+				border: 0;
+			}
+			a:visited {
+			   color: #000;
+			}
+		</style>
+	</head>
+	<body style="margin: 0px; padding: 0px;">	
+		<center>
+			<table cellpadding="0" cellspacing="0" style="width: 60%; max-width: 640px; min-width: 310px; border: 5px solid #17A7DF; color: #8b8b8b; margin: auto; padding: 0px; font-family: Arial; font-size: 13px; line-height: 20px">
+				<tr style="height: 40px;"><td></td></tr>
+				<tr style="height: 57px;">
+					<td><center><a href="https://www.ordergroove.com/" target="_blank" style="margin: 0; padding: 0; border: none; outline: none; text-decoration: none;"><img src="${URLUtils.httpStatic('images/email/ordergroove.jpg')}" style="width:243px; height: 42px;" alt="Ordergroove" /></a></center></td>
+				</tr>
+				<tr style="height: 30px;"><td></td></tr>
+				<tr>
+					<td>
+						<isreplace/>
+					</td>
+				</tr>
+				<tr style="height: 30px;"><td></td></tr>
+				<tr>
+					<td>
+						<p style="text-align: center;">
+							<a href="mailto:customersupport@ordergroove.com?Subject=Purchase%20Post%20API" target="_blank" style="font-family: arial; font-size: 12pt; letter-spacing: 1px; color: #000; margin: 0px; text-decoration: none; padding: 1px; border-bottom: 1px solid #000;">
+								${Resource.msg('email.assistant','email',null)}
+							</a>
+						</p>
+					</td>
+				</tr>
+				<tr style="height: 40px;"><td></td></tr>
+			</table>
+		</center>
+
+		<center>
+			<table cellpadding="0" cellspacing="0" style="width: 50%; max-width: 440px; min-width: 210px; margin: auto; padding: 0px; text-align: center; font-family: arial; font-size: 12px; color: #ccc; line-height: 20px">
+				<tr style="height: 20px;"><td></td></tr>
+				<tr>
+					<td>
+						<iscomment>social icons</iscomment>
+						<div style="margin: 20px auto 10px; padding: 0 60px;">
+							<a href="http://www.facebook.com/ordergroove" target="_blank"><img style="height:50px !important; width: 50px !important;" src="${URLUtils.httpStatic('images/email/facebook.png')}" alt="facebook" /></a>
+							<a href="http://www.twitter.com/ordergroove" target="_blank"><img style="height:50px; width: 50px;" src="${URLUtils.httpStatic('images/email/twitter.png')}" alt="twitter" /></a>
+							<a href="http://www.linkedin.com/company/ordergroove-inc." target="_blank"><img style="height:50px; width: 50px;" src="${URLUtils.httpStatic('images/email/linkedin.png')}" alt="linkedin" /></a>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</center>
+		<br/>
+	</body>
+</html>

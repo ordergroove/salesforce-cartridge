@@ -1,0 +1,20 @@
+{
+    "hooks": [
+        {
+            "name": "dw.order.calculate",
+            "script": "./cartridge/scripts/hooks/cart/calculate.js"
+        },
+        {
+            "name": "ordergroove.customer",
+            "script": "./cartridge/scripts/hooks/customer.js"
+        },
+        {
+            "name": "ordergroove.encryptor",
+            "script": "./cartridge/scripts/hooks/helper.js"
+        },
+        {
+            "name": "ordergroove.payment",
+            "script": "./cartridge/scripts/hooks/payment.js"
+        }
+    ]
+}

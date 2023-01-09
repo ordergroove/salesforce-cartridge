@@ -1,0 +1,12 @@
+<isif condition="${dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveToken') !== null && dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveToken') === true}">
+    <isinputfield formfield="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.firstname}" type="input" />
+    <isinputfield formfield="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.lastname}" type="input" />
+    <isinputfield formfield="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.address1}" type="input" />
+    <isinputfield formfield="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.address2}" type="input" />
+    <isinputfield formfield="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.city}" type="input" />
+    <isinputfield formfield="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.country}" type="select" />
+    <isinputfield formfield="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.states.state}" type="select" />
+    <isinputfield formfield="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.postal}" type="input" />
+    <isinputfield formfield="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.phone}" type="input" />
+    <isinputfield formfield="${pdict.CurrentForms.paymentinstruments.creditcards.newcreditcard.preferred}" type="checkbox" />
+</isif>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<extensions xmlns="http://www.demandware.com/xml/bmmodules/2007-12-11" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.demandware.com/xml/bmmodules/2007-12-11 bmext.xsd">
+
+<menuitem id="og-menu-item" position="99999" site="true">
+  <name xml:lang="x-default">Ordergroove</name>
+  <short_description xml:lang="x-default">
+      Manage Ordergroove preferences
+  </short_description>
+  <description xml:lang="x-default">
+      Manage Ordergroove preferences here
+  </description>
+  <icon>icons/og_infinity.png</icon>
+</menuitem>
+
+<menuaction id="og-dashboard" menupath="og-menu-item" position="999" site="true">
+  <name xml:lang="x-default">Ordergroove Dashboard</name>
+  <short_description xml:lang="x-default">
+    Ordergroove Dashboard
+  </short_description>
+  <description xml:lang="x-default">
+    Ordergroove Dashboard
+  </description>
+  <exec pipeline="Ordergroove" node="Dashboard"/>
+  <sub-pipelines>
+     <pipeline name="Ordergroove-Dashboard" />
+  </sub-pipelines>
+  <parameters>
+     <parameter name="menupath" value="og-menu-item"/>
+  </parameters>
+  <icon>icons/og_infinity.png</icon>
+</menuaction>
+
+</extensions>

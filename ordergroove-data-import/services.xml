@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns="http://www.demandware.com/xml/impex/services/2014-09-26">
+    <service-credential service-credential-id="OrderGrooveCreateSubscription">
+        <url>https://staging.sc.ordergroove.com/subscription/create</url>
+        <user-id/>
+        <password/>
+    </service-credential>
+
+    <service-credential service-credential-id="OrderGrooveUploadFeed">
+        <url>sftp://staging.feeds.ordergroove.com</url>
+        <user-id/>
+        <password/>
+    </service-credential>
+
+    <service-credential service-credential-id="OrderGrooveCustomerUpdate">
+        <url>https://staging.restapi.ordergroove.com/customers</url>
+        <user-id/>
+        <password/>
+    </service-credential>
+
+    <service-credential service-credential-id="OrdergroovePaymentUpdate">
+        <url>https://staging.v2.ordergroove.com/customer/update_payment_default</url>
+        <user-id/>
+        <password/>
+    </service-credential>
+
+    <service-profile service-profile-id="StandardHTTP">
+        <timeout-millis>3000</timeout-millis>
+        <rate-limit-enabled>false</rate-limit-enabled>
+        <rate-limit-calls>0</rate-limit-calls>
+        <rate-limit-millis>0</rate-limit-millis>
+        <cb-enabled>false</cb-enabled>
+        <cb-calls>0</cb-calls>
+        <cb-millis>0</cb-millis>
+    </service-profile>
+
+    <service-profile service-profile-id="StandardSFTP">
+        <timeout-millis>10000</timeout-millis>
+        <rate-limit-enabled>false</rate-limit-enabled>
+        <rate-limit-calls>0</rate-limit-calls>
+        <rate-limit-millis>0</rate-limit-millis>
+        <cb-enabled>false</cb-enabled>
+        <cb-calls>0</cb-calls>
+        <cb-millis>0</cb-millis>
+    </service-profile>
+
+    <service service-id="OrderGroove.CreateSubscription">
+        <service-type>HTTP</service-type>
+        <enabled>true</enabled>
+        <log-prefix>ordergroove</log-prefix>
+        <comm-log-enabled>true</comm-log-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>StandardHTTP</profile-id>
+        <credential-id>OrderGrooveCreateSubscription</credential-id>
+    </service>
+
+    <service service-id="OrderGroove.UploadFeed">
+        <service-type>SFTP</service-type>
+        <enabled>true</enabled>
+        <log-prefix>ordergroove</log-prefix>
+        <comm-log-enabled>true</comm-log-enabled>
+        <force-prd-enabled>true</force-prd-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>StandardSFTP</profile-id>
+        <credential-id>OrderGrooveUploadFeed</credential-id>
+    </service>
+
+    <service service-id="OrderGroove.CustomerUpdate">
+        <service-type>HTTP</service-type>
+        <enabled>true</enabled>
+        <log-prefix>ordergroove</log-prefix>
+        <comm-log-enabled>true</comm-log-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>StandardHTTP</profile-id>
+        <credential-id>OrderGrooveCustomerUpdate</credential-id>
+    </service>
+
+    <service service-id="Ordergroove.PaymentUpdate">
+        <service-type>HTTP</service-type>
+        <enabled>true</enabled>
+        <log-prefix>ordergroove</log-prefix>
+        <comm-log-enabled>true</comm-log-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>StandardHTTP</profile-id>
+        <credential-id>OrdergroovePaymentUpdate</credential-id>
+    </service>
+
+</services>

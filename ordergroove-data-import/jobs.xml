@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jobs xmlns="http://www.demandware.com/xml/impex/jobs/2015-07-01">
+    <job job-id="OrderGroovePurchasePostRetry" priority="0">
+        <description>A job process which reviews the custom object for purchase post retries based on the order number.</description>
+        <parameters/>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="ProcessPurchasePostRetries" type="ExecuteScriptModule" enforce-restart="false">
+                <description>Gets the purchase post retry custom object and attempts to retry the request based on order numbers.</description>
+                <parameters>
+                    <parameter name="ExecuteScriptModule.Module">int_ordergroove/cartridge/scripts/purchasePost.js</parameter>
+                    <parameter name="ExecuteScriptModule.FunctionName">retryPurchasePost</parameter>
+                    <parameter name="ExecuteScriptModule.Transactional">true</parameter>
+                    <parameter name="ExecuteScriptModule.TimeoutInSeconds">900</parameter>
+                </parameters>
+            </step>
+        </flow>
+        <rules>
+            <on-running runtime-threshold="15m" enabled="true">
+                <mark-job-as-hanging/>
+                <send-mail>
+                    <from>no-reply@salesforce.com</from>
+                    <to>support@example.com</to>
+                </send-mail>
+            </on-running>
+            <on-retry enabled="true">
+                <send-mail>
+                    <from>no-reply@salesforce.com</from>
+                    <to>support@example.com</to>
+                </send-mail>
+            </on-retry>
+            <on-exit status="ERROR" enabled="true">
+                <send-mail>
+                    <from>no-reply@salesforce.com</from>
+                    <to>support@example.com</to>
+                </send-mail>
+            </on-exit>
+        </rules>
+        <triggers>
+            <run-recurring enabled="true">
+                <recurrence>
+                    <date-from>2018-10-02Z</date-from>
+                    <start-time>19:00:39.000Z</start-time>
+                    <interval>10m</interval>
+                    <day-of-week/>
+                </recurrence>
+            </run-recurring>
+        </triggers>
+    </job>
+    <job job-id="OrderGrooveProductFeed" priority="0">
+        <description>Sends OrderGroove a product feed.</description>
+        <parameters/>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="WriteProductFeed" type="ExecuteScriptModule" enforce-restart="false">
+                <description/>
+                <parameters>
+                    <parameter name="ExecuteScriptModule.Module">int_ordergroove/cartridge/scripts/writeFeeds.js</parameter>
+                    <parameter name="ExecuteScriptModule.FunctionName">writeProductFeed</parameter>
+                    <parameter name="ExecuteScriptModule.Transactional">false</parameter>
+                    <parameter name="ExecuteScriptModule.TimeoutInSeconds">900</parameter>
+                </parameters>
+            </step>
+        </flow>
+        <rules>
+            <on-running runtime-threshold="30m" enabled="true">
+                <mark-job-as-hanging/>
+                <send-mail>
+                    <from>no-reply@salesforce.com</from>
+                    <to>support@example.com</to>
+                </send-mail>
+            </on-running>
+            <on-retry enabled="true">
+                <send-mail>
+                    <from>no-reply@salesforce.com</from>
+                    <to>support@example.com</to>
+                </send-mail>
+            </on-retry>
+            <on-exit status="ERROR" enabled="true">
+                <send-mail>
+                    <from>no-reply@salesforce.com</from>
+                    <to>support@example.com</to>
+                </send-mail>
+            </on-exit>
+        </rules>
+        <triggers>
+            <run-recurring enabled="true">
+                <recurrence>
+                    <date-from>2018-10-02Z</date-from>
+                    <start-time>19:00:39.000Z</start-time>
+                    <interval>30m</interval>
+                    <day-of-week/>
+                </recurrence>
+            </run-recurring>
+        </triggers>
+    </job>
+</jobs>

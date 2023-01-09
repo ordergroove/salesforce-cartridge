@@ -1,0 +1,26 @@
+<isdecorate template="mail/decorator">
+	<h1 style="${Resource.msg('email.h1', 'email', null)}">
+		<isprint value="${Resource.msg('email.postpurchase', 'email', null)}" />
+	</h1>
+	<h2 style="${Resource.msg('email.h2', 'email', null)}">
+		<isprint value="${param.status}" />: <isprint value="${param.msg}" />
+	</h2>
+	<p style="${Resource.msg('email.p', 'email', null)}">
+		<isprint value="${Resource.msgf('email.sitename', 'email', null, dw.system.Site.getCurrent().getName())}" />
+	</p>
+	<p style="${Resource.msg('email.p', 'email', null)}">
+		<isprint value="${Resource.msgf('email.hostname', 'email', null, dw.system.Site.getCurrent().getHttpsHostName())}" />
+	</p>
+	<p style="${Resource.msg('email.p', 'email', null)}">
+		<isprint value="${Resource.msgf('email.ordernumber', 'email', null, param.orderNo)}" />
+	</p>
+	<p style="${Resource.msg('email.p','email',null)}">
+		<isprint value="${Resource.msg('email.response', 'email', null)}" />
+	</p>
+	<p style="${Resource.msg('email.p','email',null)}">
+		<isprint value="${param.errorMessage}" encoding="htmlcontent" />
+	</p>
+	<p style="${Resource.msg('email.p.copy','email',null)}">
+		<isprint value="${Resource.msgf('email.retry', 'email', null, param.orderNo)}" />  <isprint value="${Resource.msg('email.attempt', 'email', null)}" />
+	</p>
+</isdecorate>

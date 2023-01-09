@@ -1,0 +1,10 @@
+<isif condition="${!empty(dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable')) && dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable') == true}">
+    <isif condition="${empty(dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveLegacyOffer')) || dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveLegacyOffer') == true}">
+        <div class="og-offer" data-og-module="conf_text"></div>
+    <iselse/>
+		<og-confirmation></og-confirmation>
+        <script type="text/javascript">
+        window.OG.clear();
+        </script>
+	</isif>
+</isif>

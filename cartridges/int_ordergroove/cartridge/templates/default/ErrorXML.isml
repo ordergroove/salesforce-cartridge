@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order>
+    <code>ERROR</code>
+    <errorCode>${pdict.ErrorCode}</errorCode>
+    <errorMsg>${pdict.ErrorMsg}</errorMsg>
+</order>

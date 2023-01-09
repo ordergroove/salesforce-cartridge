@@ -1,0 +1,23 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isif condition="${!empty(dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable')) && dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable') == true}">
+    <isif condition="${!empty(pdict.productSettings)}">
+    <script type="text/javascript">
+    <isprint value="${pdict.productSettings}" encoding="htmlsinglequote"/>
+    </script>
+    </isif>
+    <iscomment>
+        We need to defer the legacy offers main.js because it depends on <div class='og-offer'> being rendered before it loads, but
+        we need the non-legacy offers main.js to not be deferred because we need access to the OG.getOptins() and OG.clear() functions when the page is rendered
+    </iscomment>
+    <isif condition="${empty(dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveLegacyOffer')) || dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveLegacyOffer') == true}">
+        <script defer type="text/javascript" src="${dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveStaticDomain')+ '/' + dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveMerchantID') + '/main.js'}"></script>
+    <iselse/>
+        <script type="text/javascript" src="${dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveStaticDomain')+ '/' + dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveMerchantID') + '/main.js'}"></script>
+        <script type="text/javascript">
+            window.OrdergrooveTrackingUrl = "${URLUtils.url('OrderGroove-PurchasePostTracking')}"
+        </script>
+    </isif>
+    <script type="text/javascript">
+        window.OrdergrooveLegacyOffers = ${empty(dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveLegacyOffer')) || dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveLegacyOffer') == true}
+    </script>
+</isif>

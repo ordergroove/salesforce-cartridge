@@ -1,0 +1,24 @@
+<isdecorate template="common/layout/page">
+    <isif condition="${!empty(pdict.reportingURLs) && pdict.reportingURLs}">
+        <isinclude template="reporting/reportingUrls" />
+    </isif>
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addCss('/css/account/profile.css');
+        if(!empty(dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable')) && dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable')==true) {
+        	assets.addJs(dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveStaticDomain')+ '/' + dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveMerchantID') + '/msi.js');
+        }
+    </isscript>
+    <div class="hero slant-down account-image">
+        <h1 class="page-title">${Resource.msg('label.subscriptions','account',null)}</h1>
+    </div>
+    <div class="container">
+        <!---Breadcrumbs--->
+        <isinclude template="components/breadcrumbs/pageBreadcrumbs"/>
+        <div class="row justify-content-center">
+		<isif condition="${!empty(dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable')) && dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable')==true}">
+			<div id="og-msi" ng-jq=""></div>
+		</isif>
+        </div>
+    </div>
+</isdecorate>

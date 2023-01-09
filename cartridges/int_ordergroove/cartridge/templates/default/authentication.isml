@@ -1,0 +1,9 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script defer type="text/javascript" src="${dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveStaticDomain')+ '/' + dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveMerchantID') + '/auth.js'}"></script>
+	</head>
+	<body>
+	</body>
+</html>

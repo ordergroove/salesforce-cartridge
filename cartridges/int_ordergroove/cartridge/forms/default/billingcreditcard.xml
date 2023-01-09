@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19">
+
+    <!-- field for credit card type -->
+    <field formid="type" label="creditcard.type" type="string" mandatory="true" binding="creditCardType"
+        missing-error="creditcard.typemissing">
+        <options optionid-binding="cardType" value-binding="cardType" label-binding="name"/>
+    </field>
+
+	<!-- field for credit card number -->
+    <field formid="number" label="creditcard.number" type="string" mandatory="true" masked="4" max-length="16"
+	    description="creditcard.numberexample" binding="creditCardNumber"
+	    missing-error="creditcard.numbermissingerror" value-error="creditcard.numbervalueerror"/>
+	    
+	<group formid="expiration"> 
+		<!-- field for credit card expiration month -->
+	    <field formid="month" label="resource.month" type="integer" mandatory="true" binding="creditCardExpirationMonth"
+	      	missing-error="creditcard.monthmissingerror" value-error="creditcard.yearvalueerror">
+	        <options>
+	            <option label="month.january" 	value="01"/>
+	            <option label="month.february" 	value="02"/>
+	            <option label="month.march" 	value="03"/>
+	            <option label="month.april" 	value="04"/>
+	            <option label="month.may" 		value="05"/>
+	            <option label="month.june" 		value="06"/>
+	            <option label="month.july" 		value="07"/>
+	            <option label="month.august" 	value="08"/>
+	            <option label="month.september" value="09"/>
+	            <option label="month.october"   value="10"/>
+	            <option label="month.november"  value="11"/>
+	            <option label="month.december"  value="12"/>
+	        </options>
+	    </field>
+	
+		<!-- 
+			field for credit card expiration year; 
+			a value error (credit card is expired is only displayed for this field) 
+		-->
+	    <field formid="year" label="resource.year" type="integer" mandatory="true" binding="creditCardExpirationYear"
+	      	missing-error="creditcard.yearmissingerror">
+	        <options>
+	            <option optionid="2016" label="year.2016" value="2016"/>
+	            <option optionid="2017" label="year.2017" value="2017"/>
+	            <option optionid="2018" label="year.2018" value="2018"/>
+	            <option optionid="2019" label="year.2019" value="2019"/>
+	            <option optionid="2020" label="year.2020" value="2020"/>
+	            <option optionid="2021" label="year.2021" value="2021"/>
+	            <option optionid="2022" label="year.2022" value="2022"/>            
+	        </options>
+	    </field>
+	</group>
+
+	<!-- field for credit card owner -->
+    <field formid="owner" label="creditcard.ownerlabel" type="string" mandatory="true" max-length="40" binding="creditCardHolder"
+     	missing-error="creditcard.ownermissingerror"/>
+
+	<!-- field for credit card security code -->
+    <field formid="cvn" label="creditcard.cvnlabel" type="string" mandatory="true" masked="0"
+     	missing-error="creditcard.cvnmissingerror" value-error="creditcard.cvnrangeerror"/>
+
+    <field formid="firstname" label="profile.firstname" type="string" mandatory="true" binding="firstName" max-length="50"
+        missing-error="customeraddress.firstname.missing-error"/>
+    <field formid="lastname" label="profile.lastname" type="string" mandatory="true" binding="lastName" max-length="50"
+        missing-error="customeraddress.lastname.missing-error"/>     	
+    <field formid="address1" label="resource.address1" type="string" mandatory="true" binding="custom.address1" max-length="50"
+        description="customeraddress.address1.description"
+        missing-error="resource.addresserror"/>
+    <field formid="address2" label="resource.address2" type="string" mandatory="false" binding="custom.address2" max-length="50"
+        description="customeraddress.address2.description" />
+    <field formid="city" label="resource.city" type="string" mandatory="true" binding="custom.city" min-length="2" max-length="50"
+        missing-error="customeraddress.city.missing-error"/>
+
+    <!-- use global state list -->
+    <include formid="states" name="states"/>
+
+    <!--  postal code -->
+    <field formid="postal" label="resource.zipcode" type="string" mandatory="true" min-length="5" max-length="10" regexp="(^\d{5}(-\d{4})?$)|(^[abceghjklmnprstvxyABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Za-z]{1} *\d{1}[A-Za-z]{1}\d{1}$)" binding="custom.postalCode"
+        missing-error="resource.errorzip"/>
+
+    <field formid="country" label="resource.country" type="string" mandatory="true" binding="custom.countryCode"
+        missing-error="customeraddress.country.missing-error">
+        <options>
+            <option optionid="us" label="country.unitedstates" value="us"/>
+        </options>
+    </field>
+    <field formid="phone" label="profile.phone" description="address.phone.example" type="string" mandatory="true" binding="custom.phone" max-length="20"/>
+ 
+	<!-- optional flags -->
+	<field formid="preferred" label="label.subscription.card" binding="custom.preferred" type="boolean" mandatory="false" />
+	<field formid="saveCard" label="creditcard.savecard" type="boolean" mandatory="false" default-value="true" />
+
+	<!-- confirm action to save the card details -->
+    <action formid="confirm" valid-form="true"/>
+
+</form>

@@ -1,0 +1,19 @@
+<isif condition="${!empty(dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable')) && dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable') == true}">
+    <isif condition="${empty(dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveLegacyOffer')) || dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveLegacyOffer') == true}">
+        <isif condition="${!empty(pdict.isConfirmStage) && pdict.isConfirmStage == true}">
+            <div class="og-offer" data-og-module="conf" data-og-product="${lineItem.id}"></div>
+        <iselseif condition="${miniCart}"/>
+            <div class="og-offer" data-og-module="cart_flydown" data-og-product="${lineItem.id}"></div>
+        <iselseif condition="${pdict.order && !pdict.order.orderStatus}"/>
+            <div class="og-offer" data-og-module="or" data-og-product="${lineItem.id}"></div>
+        </isif>
+    <iselse/>
+        <isif condition="${!empty(pdict.isConfirmStage) && pdict.isConfirmStage == true}">
+            <og-offer product="${lineItem.id}"></og-offer>
+        <iselseif condition="${miniCart}"/>
+            <og-offer product="${lineItem.id}" location="cart"></og-offer>
+        <iselseif condition="${pdict.order && !pdict.order.orderStatus}"/>
+            <og-offer product="${lineItem.id}"></og-offer>
+        </isif>
+    </isif>
+</isif>

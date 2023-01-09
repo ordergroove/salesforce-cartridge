@@ -1,0 +1,12 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isdecorate template="account/pt_account"/>
+<isinclude template="util/modules"/>
+    <isslot id="account-banner" description="Banner for My Account pages" context="global" />
+    <script type="text/javascript" src="${dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveStaticDomain')+ '/' + dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveMerchantID') + '/msi.js'}"></script>
+    <h1>
+        ${Resource.msg('label.subscriptions','account',null)}
+    </h1>
+    <isif condition="${!empty(dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable')) && dw.system.Site.getCurrent().getCustomPreferenceValue('OrderGrooveEnable')==true}">
+        <div id="og-msi" ng-jq=""></div>
+    </isif>
+</isdecorate>
