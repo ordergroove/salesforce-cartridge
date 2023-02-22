@@ -311,7 +311,7 @@ exports.OrderPlacement = function () {
 
 		// Set shipping cost
         var sli = shipment.getStandardShippingLineItem();
-        var shippingCost = Number(customerXML.child('orderShipping').toString());
+        var shippingCost = Number(headXML.child('orderShipping').toString());
         sli.setPriceValue(shippingCost);
         var shippingTaxClassID = sli.getTaxClassID();
         if (shippingTaxClassID === null) {
