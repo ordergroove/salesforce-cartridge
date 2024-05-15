@@ -48,5 +48,8 @@ You can also supply URL of the sandbox on the command line:
 npm run test:integration -- --baseUrl devxx-sitegenesis-dw.demandware.net
 ```
 
+### Known Limitations ###
+This cartridge leverages Salesforce SFTP services to setup the product sync process between Salesforce and Ordergroove. This means that you can use this cartridge to send us two different product feed files. One for your Test and one for Production environment. If you are leveraging a single SFCC instance to run multiple sites and you wish to integrate these separate sites with Ordergroove then you will need to alter the cartridge code to add support for your specific multi-site setup.
+
 ### Questions?  Comments? ###
 Please contact: salesforce@ordergroove.com
